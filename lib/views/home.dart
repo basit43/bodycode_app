@@ -13,33 +13,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 int selectedIndex = 0; // To keep track of the selected tab
+final List<Widget> widgetOptions = <Widget>[
+  // Replace these widgets with the content for each tab
+  const EmotionCode(),
+  const BodyCode(),
+  const BeliefCode(),
+  const Setting()
+];
 
 class _HomeScreenState extends State<HomeScreen> {
-  Map<int, GlobalKey<NavigatorState>> navigatorKeys = {
-    0: GlobalKey<NavigatorState>(),
-    1: GlobalKey<NavigatorState>(),
-    2: GlobalKey<NavigatorState>(),
-  };
-
-  final List<Widget> _widgetOptions = <Widget>[
-    // Replace these widgets with the content for each tab
-    const EmotionCode(),
-    const BodyCode(),
-    const BeliefCode(),
-    const Setting()
-  ];
-
-  // void onItemTapped(int index) {
-  //   setState(() {
-  //     selectedIndex = index;
-  //   });
-  // }
+  void onItemTapped(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: _widgetOptions
+        child: widgetOptions
             .elementAt(selectedIndex), // Display content based on selected tab
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -72,24 +65,10 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
         currentIndex: selectedIndex,
         selectedItemColor: Colors.purple, // Set selected item color to purple
-        onTap: (int index) {
-          setState(() {
-            selectedIndex = index;
-          });
-        },
+        onTap: onItemTapped,
         unselectedItemColor:
             Colors.grey, // Set unselected item color to white (optional)
       ),
-    );
-  }
-
-  buildNavigator() {
-    return Navigator(
-      key: navigatorKeys[selectedIndex],
-      onGenerateRoute: (RouteSettings settings) {
-        return MaterialPageRoute(
-            builder: (_) => _widgetOptions.elementAt(selectedIndex));
-      },
     );
   }
 }

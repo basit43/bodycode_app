@@ -3,17 +3,36 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../resources/images.dart';
 import '../../utils/routes/rotes_named.dart';
+import '../beliefcode.dart';
+import '../bodycode.dart';
+import '../emotioncode.dart';
 import '../home.dart';
+import '../setting.dart';
 
 class SecondScreen extends StatefulWidget {
   final String parentScreen;
-  const SecondScreen({super.key, required this.parentScreen});
+  const SecondScreen({
+    super.key,
+    required this.parentScreen,
+  });
 
   @override
   State<SecondScreen> createState() => _SecondScreenState();
 }
 
 class _SecondScreenState extends State<SecondScreen> {
+  void onItemTapped(int index) {
+    setState(() {
+      selectedIndex = index;
+      if (selectedIndex == 0 ||
+          selectedIndex == 1 ||
+          selectedIndex == 2 ||
+          selectedIndex == 3) {
+        Navigator.pushReplacementNamed(context, 'HomeScreen');
+      }
+    });
+  }
+
   List<Map<String, String>> data = [
     {
       'imageUrl': '${Images.energy}',
@@ -147,12 +166,7 @@ class _SecondScreenState extends State<SecondScreen> {
         ],
         currentIndex: selectedIndex,
         selectedItemColor: Colors.purple, // Set selected item color to purple
-        onTap: (int index) {
-          setState(() {
-            selectedIndex = index;
-          });
-          setState(() {});
-        },
+        onTap: onItemTapped,
         unselectedItemColor:
             Colors.grey, // Set unselected item color to white (optional)
       ),

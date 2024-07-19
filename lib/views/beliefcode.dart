@@ -17,7 +17,7 @@ class _BeliefCodeState extends State<BeliefCode> {
       appBar: AppBar(
         centerTitle: true, // Center the app bar title
         automaticallyImplyLeading: false, // Remove the back button
-        title: Text('Belief Code'), // Add an app bar
+        title: const Text('Belief Code'), // Add an app bar
       ),
       body: Center(
         child: Image.asset(

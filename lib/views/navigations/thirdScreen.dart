@@ -14,6 +14,18 @@ class ThirdScreen extends StatefulWidget {
 }
 
 class _ThirdScreenState extends State<ThirdScreen> {
+  void onItemTapped(int index) {
+    setState(() {
+      selectedIndex = index;
+      if (selectedIndex == 0 ||
+          selectedIndex == 1 ||
+          selectedIndex == 2 ||
+          selectedIndex == 3) {
+        Navigator.pushReplacementNamed(context, 'HomeScreen');
+      }
+    });
+  }
+
   List<Map<String, String>> data = [
     {'imageUrl': '${Images.energy}', 'text': 'third'},
     // Add more items here
@@ -146,12 +158,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
         ],
         currentIndex: selectedIndex,
         selectedItemColor: Colors.purple, // Set selected item color to purple
-        onTap: (int index) {
-          setState(() {
-            selectedIndex = index;
-          });
-          setState(() {});
-        },
+        onTap: onItemTapped,
         unselectedItemColor:
             Colors.grey, // Set unselected item color to white (optional)
       ),
