@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -27,13 +26,12 @@ class _ThirdScreenState extends State<ThirdScreen> {
   }
 
   List<Map<String, String>> data = [
-    {'imageUrl': '${Images.energy}', 'text': 'third'},
+    {'imageUrl': Images.energy, 'text': 'third'},
     // Add more items here
   ];
 
   @override
   void initState() {
-    print('parent screen ${widget.parentScreen}');
     setScreen();
     // TODO: implement initState
     super.initState();
@@ -41,7 +39,6 @@ class _ThirdScreenState extends State<ThirdScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print('Third screen');
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Scaffold(

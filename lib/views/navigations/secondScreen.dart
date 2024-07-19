@@ -3,11 +3,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../resources/images.dart';
 import '../../utils/routes/rotes_named.dart';
-import '../beliefcode.dart';
-import '../bodycode.dart';
-import '../emotioncode.dart';
 import '../home.dart';
-import '../setting.dart';
 
 class SecondScreen extends StatefulWidget {
   final String parentScreen;
